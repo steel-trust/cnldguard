@@ -1,0 +1,10 @@
+# 이 경로를 바꾸는 PR에는 해당 팀이 리뷰어로 자동 지정된다.
+# steel-trust = 조직 이름, pppp25012-boop = PM GitHub 아이디로 바꾼다.
+*                   @steel-trust/backend
+/db/                @steel-trust/backend
+/api/               @steel-trust/backend
+/docker-compose.yml @steel-trust/backend
+/web/               @steel-trust/frontend
+/model/             @steel-trust/data
+/notebooks/         @steel-trust/data
+/docs/              @pppp25012-boop

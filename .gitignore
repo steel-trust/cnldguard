@@ -1,0 +1,22 @@
+# 비밀 — 절대 커밋하지 않는다
+.env
+
+# 데이터 — 드라이브로 공유 (README 참고)
+data/*
+!data/.gitkeep
+*.csv
+*.parquet
+out/
+
+# 파이썬
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+
+# 프론트
+node_modules/
+dist/
+
+# OS / 편집기
+.DS_Store
+.vscode/
