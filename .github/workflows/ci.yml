@@ -1,0 +1,33 @@
+name: ci
+
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 코드 받아오기
+        uses: actions/checkout@v4
+
+      - name: 데이터 파일 차단
+        run: |
+          if git ls-files | grep -Ei '\.(csv|xlsx|parquet)$'; then
+            echo "데이터 파일은 올릴 수 없어요"
+            exit 1
+          fi
+
+      - name: 비밀 파일(.env) 차단
+        run: |
+          if git ls-files | grep -E '(^|/)\.env$'; then
+            echo ".env 파일은 올릴 수 없어요"
+            exit 1
+          fi
+
+      - name: 정답 라벨 컬럼 차단
+        run: |
+          if git grep -n -i 'anomaly_workroll' -- ':!docs' ':!db' ':!.github'; then
+            echo "정답 라벨 컬럼 이름이 코드에 있어요"
+            exit 1
+          fi
